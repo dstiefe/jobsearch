@@ -7,11 +7,11 @@ from itertools import groupby
 
 """ http://blog.luisrei.com/articles/flaskrest.html
 """
-import create 
-import delete 
-import retrieve
-import update
-import search
+from app import create
+from app import delete
+from app import retrieve
+from app import update
+from app import search
 
 from flask import json
 
@@ -104,7 +104,7 @@ def route_filter_job_time():
 
 	list_arg = [(x[0],x[1][0]) for x in request.args.lists()]
 	d= {}
-	print list_arg
+	print(list_arg)
 	for item in list_arg:
 		if 'from' == item[0]: 
 			d[item[0]] = item[1]
@@ -122,7 +122,7 @@ def route_create_user():
 	users = Table('jobUser', connection=conn)
 	if request.headers['Content-Type'] == 'application/json':
 		data= json.dumps(request.json)
-		print data
+		print(data)
 		final_response= create.create_user(data, users)
 	else: 
 		final_response= {'status': '404',  'message': 'You need to specify data'}
@@ -134,7 +134,7 @@ def route_create_job():
 	jobs = Table('jobJobs', connection=conn)
 	if request.headers['Content-Type'] == 'application/json':
 		data=request.json
-		print "tttt", type(data), data
+		print ("tttt", type(data), data)
 		final_response= create.create_job(data, jobs)
 	else: 
 		final_response= {'status': '404',  'message': 'You need to specify data'}

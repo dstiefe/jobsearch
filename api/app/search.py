@@ -11,7 +11,7 @@ def filter_jobs(creteria, jobJobs):
 	found = False
 	for item in all_jobs:
 		for k,v  in creteria.items():
-			print k,v
+			print(k,v)
 			if k == 'job_location' and v in item.get(k):
 				found = True
 			elif item.get(k) == v: 
@@ -68,7 +68,7 @@ def filter_jobs_time(creteria, jobJobs):
 	for item in all_jobs:
 		job_time=datetime.datetime.strptime(item['published_date'], "%m/%d/%Y")
 		if from_time < job_time < to_time:
-			print creteria['from'], creteria['to']
+			print(creteria['from'], creteria['to'])
 			r_json= {}
 			r_json['job_id'] = item['job_id']
 			r_json['job_title'] = item['job_title']
