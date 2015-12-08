@@ -2,7 +2,12 @@
 # from app import app
 # app.run(debug=True)
 import os
+os.environ["AWS_ACCESS_KEY_ID"] = 'AKIAJCSJR3BZJ62BMDVQ'
+os.environ["AWS_SECRET_ACCESS_KEY"] = '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'
+
 from app import app
+
+
 
 port = int(os.environ.get('PORT', 5000))
 

@@ -19,6 +19,7 @@ import os.path
 from boto import dynamodb2
 from boto.dynamodb2.fields import HashKey, RangeKey, KeysOnlyIndex, GlobalAllIndex
 from boto.dynamodb2.table import Table
+from flask.ext.dynamo import Dynamo
 
 # username: daniel
 AWS_ACCESS_KEY_ID = 'AKIAJCSJR3BZJ62BMDVQ'
