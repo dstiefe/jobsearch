@@ -1,6 +1,6 @@
 import uuid
 class User(object):
-    def __init__(self, id, user_name, first_name, last_name, password, account_type='standard_user'):
+    def __init__(self, id, user_name, first_name, last_name, password, account_type='standard_user', **kwargs):
         self.id = id
         self.user_name = user_name
         self.first_name = first_name

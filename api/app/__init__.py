@@ -15,12 +15,14 @@ TABLE_RESUMES = "{}_{}".format(TABLE_PREFIX, 'Resumes')
 
 app = Flask(__name__)
 app.config['DYNAMO_TABLES'] = [
-    Table(TABLE_USERS, schema=[HashKey('user_name')]),
+    Table(TABLE_USERS, schema=[HashKey('id')]),
     Table(TABLE_JOBS, schema=[HashKey('id')]),
     Table(TABLE_RESUMES, schema=[HashKey('id')]),
 ]
 app.config['SECRET_KEY'] = '2283IP3JMMv1-HObk0_38d327B21Zp8u-gHmc_0ZA!CJj'
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(seconds=864000)
+app.config['JWT_AUTH_URL_RULE']  = '/api/v1/auth'
+
 dynamo = Dynamo(app)
 #with app.app_context():
 #   dynamo.create_all()
@@ -31,7 +33,9 @@ jwt.auth_response_callback = auth_response
 api = Api(app)
 
 from app.controllers.UsersController import *
-api.add_resource(UsersController, '/users/<string:user_id>')
+
+api.add_resource(UsersController, '/api/v1/users')
+api.add_resource(UserController, '/api/v1/users/<string:user_id>')
 
 
 #from app import views
