@@ -1,3 +1,5 @@
+from functools import wraps
+
 import boto
 from flask_restful import Resource, abort, reqparse
 from flask import Flask, jsonify, request
@@ -8,6 +10,9 @@ from app.models.User import User
 from flask.views import MethodView
 import hashlib
 from app.helpers.helpermethods import *
+
+
+
 
 class UserController(Resource):
     @jwt_required()
@@ -24,7 +29,12 @@ class UserController(Resource):
 
         return jsonify(exist_item.__dict__)
 
+
+
 class UsersController(Resource):
+
+
+
     @jwt_required()
     def put(self):
         user_id = current_identity.id
@@ -70,6 +80,7 @@ class UsersController(Resource):
         return None, 204
 
     @jwt_required()
+    #@role_permission(['admin'])
     def get(self):
 
         parser = reqparse.RequestParser()

@@ -1,5 +1,6 @@
 from app import *
 from werkzeug.security import safe_str_cmp
+from flask_restful import Resource, abort, reqparse
 from app.models.User import User
 from flask_jwt import JWT, jwt_required, current_identity
 from flask import Flask, jsonify, request
@@ -32,5 +33,18 @@ def identity(payload):
         exist_item = None
 
     return User(**exist_item)
+
+def role_permission(dict):
+    def role_permission_in(function_to_decorate):
+
+        def a_wrapper_accepting_arguments(*args):
+            print(dict)
+            account_type=current_identity.account_type
+            if account_type not in dict:
+                abort(401)
+            function_to_decorate(*args)
+
+        return a_wrapper_accepting_arguments
+    return role_permission_in
 
 
