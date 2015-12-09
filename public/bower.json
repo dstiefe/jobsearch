@@ -1,0 +1,26 @@
+{
+  "name": "jobsearch",
+  "homepage": "https://github.com/dstiefe/jobsearch",
+  "authors": [
+    "Kirill Novak <hermes.coder@gmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-sanitize": "~1.4.8",
+    "angular-animate": "~1.4.8",
+    "angular-resource": "~1.4.8",
+    "angular-ui-router": "~0.2.15"
+  }
+}
