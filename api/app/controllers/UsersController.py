@@ -11,9 +11,6 @@ from flask.views import MethodView
 import hashlib
 from app.helpers.helpermethods import *
 
-
-
-
 class UserController(Resource):
     @jwt_required()
     def get(self, user_id):
@@ -29,12 +26,7 @@ class UserController(Resource):
 
         return jsonify(exist_item.__dict__)
 
-
-
 class UsersController(Resource):
-
-
-
     @jwt_required()
     def put(self):
         user_id = current_identity.id
@@ -80,7 +72,7 @@ class UsersController(Resource):
         return None, 204
 
     @jwt_required()
-    #@role_permission(['admin'])
+    #@roles_required(['admin'])
     def get(self):
 
         parser = reqparse.RequestParser()

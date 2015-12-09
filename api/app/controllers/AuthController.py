@@ -34,7 +34,7 @@ def identity(payload):
 
     return User(**exist_item)
 
-def role_permission(dict):
+def roles_required(dict):
     def role_permission_in(function_to_decorate):
 
         def a_wrapper_accepting_arguments(*args):
